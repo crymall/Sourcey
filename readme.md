@@ -2,6 +2,8 @@
 
 Qualitative researchers need platforms to share their work with the public. Sourcey is an easy-to-use platform to publish informational modules, synthesizing research in a way that is simple, accessible, and scalable.
 
+This is not a production readme. It is a project plan. Updates will be posted regularly as features are completed.
+
 ### Database Schema
 
 * Users
