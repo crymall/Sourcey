@@ -8,25 +8,31 @@ class MyProvider extends Component {
     super();
 
     this.state = {
-      users: ""
+      user: ""
     };
   }
 
   componentDidMount() {
-    axios.get('/users')
-         .then((res) => {
-           this.setState({
-             users: res.data.data
-           })
-         })
-         .catch((err) => {
-           console.log(err)
-         });
+    // axios.get('/users')
+    //      .then((res) => {
+    //        this.setState({
+    //          users: res.data.data
+    //        })
+    //      })
+    //      .catch((err) => {
+    //        console.log(err)
+    //      });
+  }
+
+  loginUser = (user) => {
+    this.setState({
+      user: user
+    })
   }
 
   render() {
     return (
-      <MyContext.Provider value={this.state}>
+      <MyContext.Provider value={{state: this.state, funcs: {loginUser: this.loginUser}}}>
         {this.props.children}
       </MyContext.Provider>
     );

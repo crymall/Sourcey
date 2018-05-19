@@ -1,4 +1,6 @@
 let db = require('./db_info.js');
+const authHelpers = require("../auth/helpers");
+const passport = require("../auth/local");
 
 const getAllUsers = (req, res, next) => {
   db.any('SELECT * FROM users')
@@ -28,7 +30,44 @@ const getSingleUser = (req, res, next) => {
     })
 }
 
+const createUser = (req, res, next) => {
+  const hash = authHelpers.createHash(req.body.password);
+
+  db.none('INSERT INTO users (username, password_digest) VALUES (${username}, ${password})', {username: req.body.username, password: hash})
+    .then(() => {
+      passport.authenticate("local", {})
+    })
+    .then(() => {
+      res.status(200)
+         .json({
+           user: {username: req.body.username},
+           message: "Registration successful."
+         })
+    })
+    .catch((err) => {
+      res.status(500)
+         .json({
+           message: err.message
+         })
+    })
+}
+
+const logoutUser = (req, res, next) => {
+  req.logout();
+  res.status(200).send("log out success");
+}
+
+const loginUser = (req, res) => {
+  res.json({
+    user: req.user,
+    message: "Login Success"
+  });
+};
+
 module.exports = {
   getAllUsers,
-  getSingleUser
+  getSingleUser,
+  createUser,
+  logoutUser,
+  loginUser
 };

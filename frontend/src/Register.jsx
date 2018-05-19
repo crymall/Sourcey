@@ -1,24 +1,17 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
-import Modal from 'react-responsive-modal';
 import axios from 'axios';
 import { MyContext } from './MyProvider';
 
-class Home extends Component {
+class Register extends Component {
   constructor() {
-    super();
+    super()
+
     this.state = {
       usernameInput: '',
       passwordInput: '',
-      open: false,
-      message: ''
-    };
-  }
-
-  toggleModal = () => {
-    this.setState({
-      open: !this.state.open
-    })
+      message: '',
+      status: 'pending'
+    }
   }
 
   handleUsernameChange = (e) => {
@@ -37,7 +30,7 @@ class Home extends Component {
     const { usernameInput, passwordInput } = this.state;
 
     axios
-      .post("/users/login", {
+      .post("/users/new", {
         username: usernameInput,
         password: passwordInput
       })
@@ -61,29 +54,27 @@ class Home extends Component {
   }
 
   render() {
-    let { usernameInput, passwordInput, message } = this.state;
+    const { usernameInput, passwordInput, message } = this.state
+
     return (
       <MyContext.Consumer>
         {
           (context) => {
             return (
               <div>
-                <h1> Welcome! </h1>
-                <Link to='/register'>Register</Link>
-                <button onClick={this.toggleModal}>Log In</button>
-                <Modal open={this.state.open} onClose={this.toggleModal} showCloseIcon={false} center>
-                  Username:
-                  <input type="text" value={usernameInput} onChange={this.handleUsernameChange}/>
+                <h1>Register</h1>
 
-                  Password:
-                  <input type="text" value={passwordInput} onChange={this.handlePasswordChange}/>
+                Username:
+                <input type="text" value={usernameInput} onChange={this.handleUsernameChange}/>
 
-                  <button onClick={() => {
-                      this.submitForm(context.funcs.loginUser);
-                    }}>Log In</button>
+                Password:
+                <input type="text" value={passwordInput} onChange={this.handlePasswordChange}/>
 
-                  {message}
-                </Modal>
+                <button onClick={() => {
+                    this.submitForm(context.funcs.loginUser);
+                  }}>Register</button>
+
+                {message}
               </div>
             )
           }
@@ -91,6 +82,6 @@ class Home extends Component {
       </MyContext.Consumer>
     )
   }
-}
+};
 
-export default Home;
+export default Register;

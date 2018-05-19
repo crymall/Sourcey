@@ -3,13 +3,17 @@ import { Route, Switch } from 'react-router-dom';
 import MyProvider from './MyProvider';
 import { MyContext } from './MyProvider';
 import Home from './Home';
+import Register from './Register';
 
 class App extends Component {
   render() {
     return (
-      <Switch>
-        <Route exact path='/' component={Home} />
-      </Switch>
+      <MyProvider>
+        <Switch>
+          <Route exact path='/' component={Home} />
+          <Route exact path='/register' component={Register} />
+        </Switch>
+      </MyProvider>
     )
   }
 }
