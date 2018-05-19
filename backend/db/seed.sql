@@ -5,7 +5,7 @@ CREATE DATABASE sourcey;
 
 CREATE TABLE users (
   id SERIAL PRIMARY KEY,
-  username VARCHAR(12) NOT NULL,
+  username VARCHAR(12) UNIQUE NOT NULL,
   password_digest VARCHAR NOT NULL,
   image_url VARCHAR
 );
