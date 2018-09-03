@@ -1,0 +1,25 @@
+.title-area {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.login-area {
+  width: 300px;
+  display: flex;
+  justify-content: space-around;
+}
+
+.log-link {
+  font-family: sans-serif;
+  font-variant: small-caps;
+  text-decoration: underline;
+  color: teal;
+}
+
+.log-link:hover {
+  color: red;
+  cursor: pointer;
+}
