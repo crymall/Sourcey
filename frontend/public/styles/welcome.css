@@ -1,0 +1,19 @@
+#root {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+h1 {
+  font-family: sans-serif;
+  size: 20px;
+}
+
+.home {
+  width: 100%;
+  background-color: lavender;
+}
+
+.register {
+  width: 100%;
+}

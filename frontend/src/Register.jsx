@@ -61,8 +61,8 @@ class Register extends Component {
         {
           (context) => {
             return (
-              <div>
-                <h1>Register</h1>
+              <div className='register'>
+                <h3>Register</h3>
 
                 Username:
                 <input type="text" value={usernameInput} onChange={this.handleUsernameChange}/>

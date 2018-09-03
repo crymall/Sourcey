@@ -53,5 +53,16 @@ CREATE TABLE collaborations (
   is_admin BOOLEAN NOT NULL
 );
 
+CREATE TABLE tags (
+  id SERIAL PRIMARY KEY,
+  tag VARCHAR NOT NULL
+);
+
+CREATE TABLE taggings (
+  id SERIAL PRIMARY KEY,
+  tag_id INTEGER REFERENCES tags(id) NOT NULL,
+  module_id INTEGER REFERENCES modules(id) NOT NULL
+);
+
 INSERT INTO users (username, password_digest)
   VALUES ('Reed', 'password'), ('Joe', 'password');

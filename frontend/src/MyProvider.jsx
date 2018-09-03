@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import axios from 'axios';
 
 export const MyContext = React.createContext();
 
@@ -8,31 +7,33 @@ class MyProvider extends Component {
     super();
 
     this.state = {
-      user: ""
+      user: "",
+      allModules: ""
     };
   }
 
   componentDidMount() {
-    // axios.get('/users')
-    //      .then((res) => {
-    //        this.setState({
-    //          users: res.data.data
-    //        })
-    //      })
-    //      .catch((err) => {
-    //        console.log(err)
-    //      });
   }
 
   loginUser = (user) => {
     this.setState({
       user: user
-    })
+    });
+  }
+
+  setModules = (modules) => {
+    this.setState({
+      allModules: modules
+    });
   }
 
   render() {
     return (
-      <MyContext.Provider value={{state: this.state, funcs: {loginUser: this.loginUser}}}>
+      <MyContext.Provider value={{
+                            state: this.state,
+                            funcs: {loginUser: this.loginUser,
+                                    setModules: this.setModules}}
+                                }>
         {this.props.children}
       </MyContext.Provider>
     );
