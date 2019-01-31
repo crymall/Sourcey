@@ -2,6 +2,8 @@
 
 Qualitative researchers need platforms to share their work with the public. Sourcey is an easy-to-use platform to publish informational modules, synthesizing research in a way that is simple, accessible, and scalable.
 
+Another function of this app is to give me an opportunity to practice using the Context API. More on that as I learn it.
+
 This is not a production readme. It is a project plan. Updates will be posted regularly as features are completed.
 
 ### Database Schema
